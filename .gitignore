@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -82,4 +81,3 @@ typings/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
->>>>>>> Initial commit
