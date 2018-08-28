@@ -2,11 +2,6 @@
   "name": "qtmsheep.com",
   "version": "0.1.0",
   "private": true,
-  "proxy": {
-    "^\\/api\\/.*": {
-      "target": "http://localhost:2000"
-    }
-  },
   "dependencies": {
     "axios": "^0.18.0",
     "react": "^16.4.2",

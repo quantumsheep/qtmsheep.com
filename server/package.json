@@ -1,0 +1,17 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "QuantumSheep",
+  "license": "MIT",
+  "dependencies": {
+    "hapi": "^17.5.4"
+  },
+  "devDependencies": {
+    "@types/hapi": "^17.0.18"
+  }
+}
