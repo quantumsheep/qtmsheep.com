@@ -1,25 +1,34 @@
 const Hapi = require('hapi');
-const fs = require('fs').promises;
+const fs = require('fs');
+const path = require('path');
 
 const server = Hapi.server({
     port: 2000,
-    host: 'localhost'
+    host: 'localhost',
+    routes: {
+        cors: true
+    }
 });
 
 server.route({
     method: 'GET',
     path: '/pages/{page}',
-    handler: async (request, h) => {
-        const page = encodeURIComponent(request.params.name);
+    handler: (request, h) => {
+        return new Promise((resolve, reject) => {
+            const page_path = path.resolve(`pages/${encodeURIComponent(request.params.page)}.md`);
 
-        try {
-            const content = await fs.readFile(`../pages/${page}.md`);
-            
-            return content.toString();
-        } catch(e) {
-            console.log(e);
-            return "";
-        }
+            fs.exists(page_path, exists => {
+                if (!exists) {
+                    return resolve({ content: "" });
+                }
+
+                fs.readFile(page_path, (err, data) => {
+                    if (err || !data) return resolve({ content: "" });
+
+                    resolve({ content: data.toString() });
+                });
+            });
+        });
     }
 });
 
