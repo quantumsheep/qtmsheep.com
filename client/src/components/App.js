@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
 
 import Navigation from './Navigation';
 import NavigationItem from './NavigationItem';
 
 import Page from './Page';
+import Blog from './Blog';
 
 export default class App extends Component {
   render() {
@@ -33,7 +34,7 @@ export default class App extends Component {
             <div>
               <Switch>
                 <Page path="/" page="/home" exact />
-                <Page path="/blog" exact />
+                <Route path="/blog" exact component={Blog} />
               </Switch>
             </div>
           </main>
