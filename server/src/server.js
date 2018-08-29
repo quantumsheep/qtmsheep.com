@@ -44,6 +44,12 @@ server.route({
                 resolve(posts);
             });
         });
+    },
+    options: {
+        cache: {
+            expiresIn: 300 * 1000,
+            privacy: 'private'
+        }
     }
 });
 

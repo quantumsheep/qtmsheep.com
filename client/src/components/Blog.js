@@ -16,7 +16,7 @@ export default class Blog extends Component {
   render() {
     return (
       <div>
-        <h1>Articles</h1>
+        <h1>Articles Medium</h1>
         {
           this.state.posts.map(post => (
             <a href={`https://medium.com/@nathanaeldemacon/${post.id}`} target="blank" key={post.id} className="pre-article">

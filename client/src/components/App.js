@@ -6,6 +6,7 @@ import NavigationItem from './NavigationItem';
 
 import Page from './Page';
 import Blog from './Blog';
+import GithubProject from './GithubProject';
 
 export default class App extends Component {
   render() {
@@ -26,7 +27,16 @@ export default class App extends Component {
               <span>My projects</span>
             </NavigationItem>
             <NavigationItem>
-              <Link to="/">Now for VSCode</Link>
+              <Link to="/project/vscode-now">Now for VSCode</Link>
+            </NavigationItem>
+            <NavigationItem className="NavigationCategory">
+              <span>Social</span>
+            </NavigationItem>
+            <NavigationItem>
+              <a href="https://www.linkedin.com/in/nathanael-demacon/" target="blank">LinkedIn</a>
+            </NavigationItem>
+            <NavigationItem>
+              <a href="https://twitter.com/qtmsheep" target="blank">Twitter</a>
             </NavigationItem>
           </Navigation>
 
@@ -35,6 +45,7 @@ export default class App extends Component {
               <Switch>
                 <Page path="/" page="/home" exact />
                 <Route path="/blog" exact component={Blog} />
+                <GithubProject path="/project/:project" exact component={Blog} />
               </Switch>
             </div>
           </main>
