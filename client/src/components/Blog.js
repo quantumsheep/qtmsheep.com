@@ -14,19 +14,39 @@ export default class Blog extends Component {
   }
 
   render() {
+    const skeletons = [];
+
+    if (this.state.posts.length <= 0) {
+      for (let i = 0; i < 10; i++) {
+        skeletons.push(
+          <div className="pre-article">
+            <div className="pre-article-thumbnail skeleton"></div>
+            <div className="pre-article-content">
+              <div class="pre-article-title skeleton"></div>
+              <div class="pre-article-text skeleton"></div>
+              <div class="pre-article-text end skeleton"></div>
+            </div>
+          </div>
+        );
+      }
+    }
+
     return (
       <div>
         <h1>Articles Medium</h1>
         {
           this.state.posts.map(post => (
-            <a href={`https://medium.com/@nathanaeldemacon/${post.id}`} target="blank" key={post.id} className="pre-article">
-              <div className="pre-article-thumbnail" style={{backgroundImage: `url(https://cdn-images-1.medium.com/max/1000/${post.virtuals.previewImage.imageId})`}}></div>
+            <a href={post.url} target="blank" key={post.id} className="pre-article">
+              <div className="pre-article-thumbnail" style={{ backgroundImage: `url(${post.thumbnail})` }}></div>
               <div className="pre-article-content">
                 <h2>{post.title}</h2>
-                <p>{post.content.subtitle}</p>
+                <p>{post.subtitle}</p>
               </div>
             </a>
           ))
+        }
+        {
+          skeletons.map(skeleton => skeleton)
         }
       </div>
     );
