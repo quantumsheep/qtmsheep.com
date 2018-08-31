@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
 import axios from 'axios';
@@ -51,7 +51,26 @@ export default class Page extends Component {
 
     return (
       <Route path={path} {...others}>
-        <ReactMarkdown source={this.state.content} />
+        <ReactMarkdown
+          source={this.state.content}
+          escapeHtml={false}
+          renderers={{
+            link: ({ href, children, ...others }) => {
+              if (href.startsWith('/')) {
+                return (
+                  <Link to={href} {...others}>
+                    {children}
+                  </Link>
+                );
+              } else {
+                return (
+                  <a href={href} {...others} target="blank">
+                    {children}
+                  </a>
+                )
+              }
+            }
+          }} />
       </Route>
     );
   }
