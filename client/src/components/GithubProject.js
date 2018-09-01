@@ -10,8 +10,8 @@ export default class Blog extends Component {
 
   componentDidMount() {
     axios.get(`https://raw.githubusercontent.com/QuantumSheep/${this.props.computedMatch.params.project}/master/README.md`)
-    .then(({ data: readme }) => this.setState({ readme }))
-    .catch(err => console.log(err));
+      .then(({ data: readme }) => this.setState({ readme }))
+      .catch(err => console.log(err));
   }
 
   render() {
