@@ -1,53 +1,39 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import Navigation from './Navigation';
-import NavigationItem from './NavigationItem';
-
-import Page from './Page';
-import Blog from './Blog';
-import GithubProject from './GithubProject';
+import hamburger from '../resources/hamburger.svg';
+import arrowDown from '../resources/arrow-down.svg';
 
 export default class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
-          <Navigation>
-            <NavigationItem className="NavigationCategory">
-              <span>General</span>
-            </NavigationItem>
-            <NavigationItem>
-              <Link to="/">Home</Link>
-            </NavigationItem>
-            <NavigationItem>
-              <Link to="/blog">Blog</Link>
-            </NavigationItem>
-            <NavigationItem className="NavigationCategory">
-              <span>My projects</span>
-            </NavigationItem>
-            <NavigationItem>
-              <Link to="/project/vscode-now">Now for VSCode</Link>
-            </NavigationItem>
-            <NavigationItem className="NavigationCategory">
-              <span>Social</span>
-            </NavigationItem>
-            <NavigationItem>
-              <a href="https://www.linkedin.com/in/nathanael-demacon/" target="blank">LinkedIn</a>
-            </NavigationItem>
-            <NavigationItem>
-              <a href="https://twitter.com/qtmsheep" target="blank">Twitter</a>
-            </NavigationItem>
-          </Navigation>
-
+        <div>
+          <div className="side-menu">
+            <a href="#about">
+              <span>About</span>
+              <div></div>
+            </a>
+            <a href="#about">
+              <span>Skills</span>
+              <div></div>
+            </a>
+          </div>
           <main>
-            <div>
-              <Switch>
-                <Page path="/" page="/home" exact />
-                <Route path="/blog" exact component={Blog} />
-                <GithubProject path="/project/:project" exact component={Blog} />
-              </Switch>
-            </div>
+            <header>
+              <h1 className="title">QuantumSheep</h1>
+              <img className="hamburger" src={hamburger} alt="Menu" />
+            </header>
+            <section id="about">
+              <div className="section-content">
+                <div className="section-title">Hi! I’m <span className="blue">Nathanael</span>, and I’m a fullstack developer.</div>
+                <div className="section-divider"></div>
+                <div className="section-description">Driven by my passion, I put my all in everything I do programming-wise. Join me in my coding adventure!</div>
+              </div>
+              <div className="section-footer">
+                <img className="down-arrow" src={arrowDown} alt="Next" />
+              </div>
+            </section>
           </main>
         </div>
       </Router>

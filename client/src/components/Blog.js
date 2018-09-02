@@ -33,7 +33,7 @@ export default class Blog extends Component {
 
     return (
       <div>
-        <h1>Articles Medium</h1>
+        <h1>Medium articles</h1>
         {
           this.state.posts.map(post => (
             <a href={post.url} target="blank" key={post.id} className="pre-article">
