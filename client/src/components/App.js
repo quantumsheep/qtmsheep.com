@@ -7,18 +7,38 @@ import arrowDown from '../resources/arrow-down.svg';
 export default class App extends Component {
   componentDidMount() {
     this.setAnchor();
+
+    this.selectSideMenuAnchor(window.location.hash || "#about");
   }
 
   setAnchor = () => {
+    const self = this;
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
 
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
+        const href = this.getAttribute('href');
+
+        window.history.replaceState(null, document.title, href);
+
+        self.selectSideMenuAnchor(href);
+
+        document.querySelector(href).scrollIntoView({
           behavior: 'smooth'
         });
       });
     });
+  }
+
+  selectSideMenuAnchor = hash => {
+    document.querySelectorAll(`.side-menu > a[href^="#"]`).forEach(link => link.classList.remove('active'));
+
+    const link = document.querySelector(`.side-menu > a[href="${hash}"]`);
+
+    if (link) {
+      link.classList.add('active');
+    }
   }
 
   render() {
@@ -30,7 +50,7 @@ export default class App extends Component {
               <span>About</span>
               <div></div>
             </a>
-            <a href="#about">
+            <a href="#skills">
               <span>Skills</span>
               <div></div>
             </a>
@@ -50,7 +70,7 @@ export default class App extends Component {
                 <img className="down-arrow" src={arrowDown} alt="Next" />
               </div>
             </section>
-            <section id="about">
+            <section id="skills">
               <div className="section-content">
                 <div className="section-title">Hi! I’m <span className="blue">Nathanael</span>, and I’m a fullstack developer.</div>
                 <div className="section-divider"></div>

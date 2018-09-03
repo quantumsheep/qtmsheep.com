@@ -124,7 +124,11 @@ header h1 {
   height: 27px;
   border: solid 2px #979797;
   border-radius: 100%;
-  /* background-color: #979797; */
+  transition: all .2s;
+}
+
+.side-menu > a.active > div {
+  background-color: #979797;
 }
 
 section {
