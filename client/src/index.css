@@ -53,10 +53,7 @@ body {
 main {
   position: relative;
   background-color: #350d2e;
-  padding: 45px 60px;
   min-height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 a {
@@ -131,8 +128,8 @@ header h1 {
 }
 
 section {
-  height: 100%;
-  flex: 1;
+  height: 100vh;
+  padding: 45px 60px;
   display: flex;
   flex-direction: column;
   position: relative;
