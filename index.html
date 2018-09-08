@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="shortcut icon" href="/assets/favicon.ico">
+
+  <title>QuantumSheep's coding adventures</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <script>console.log("Hey, I'm here to load this website smoothly, don't pay attention to me :D");</script>
+</head>
+
+<body>
+  <header>
+    <h1 class="title">QuantumSheep</h1>
+    <img class="hamburger" src="/assets/svg/hamburger.svg" alt="Menu" />
+  </header>
+  <div class="side-menu">
+    <a href="#about">
+      <span>About</span>
+      <div></div>
+    </a>
+    <a href="#skills">
+      <span>Skills</span>
+      <div></div>
+    </a>
+  </div>
+  <main>
+    <section id="about">
+      <div class="section-content">
+        <div class="section-title">Hi! I’m <span class="blue">Nathanael</span>, and I’m a fullstack developer.</div>
+        <div class="section-divider"></div>
+        <div class="section-description">Driven by my passion, I put my all in everything I do programming-wise.
+          Join me in my coding adventure!</div>
+      </div>
+      <div class="section-footer">
+        <a>
+          <img class="down-arrow" src="/assets/svg/arrow-down.svg" alt="Next" />
+        </a>
+      </div>
+    </section>
+    <section id="skills">
+      <div class="section-content">
+        <div class="section-title">Hi! I’m <span class="blue">Nathanael</span>, and I’m a fullstack developer.</div>
+        <div class="section-divider"></div>
+        <div class="section-description">Driven by my passion, I put my all in everything I do programming-wise.
+          Join me in my coding adventure!</div>
+      </div>
+      <div class="section-footer">
+        <a>
+          <img class="down-arrow" src="/assets/svg/arrow-down.svg" alt="Next" />
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const selectSideMenuAnchor = hash => {
+      document.querySelectorAll('.side-menu > a[href^="#"]').forEach(link => link.classList.remove('active'));
+
+      const link = document.querySelector(`.side-menu > a[href="${hash}"]`);
+
+      if (link) {
+        link.classList.add('active');
+      }
+    }
+
+    const setAnchor = () => document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const href = this.getAttribute('href');
+
+        window.history.replaceState(null, document.title, href);
+
+        selectSideMenuAnchor(href);
+
+        document.querySelector(href).scrollIntoView({
+          behavior: 'smooth'
+        });
+
+        setTimeout(() => console.log('done'), 100);
+      });
+    });
+
+    document.querySelectorAll('img.down-arrow').forEach(img => {
+      const link = img.closest('a');
+      const section = img.closest('section');
+
+      if (parent && section) {
+        const nextSection = section.nextElementSibling;
+
+        if (nextSection) {
+          link.href = `#${nextSection.id}`;
+        }
+      }
+    });
+
+    selectSideMenuAnchor(window.location.hash || "#about");
+    setAnchor();
+
+    // left: 37, up: 38, right: 39, down: 40,
+    // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+    var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
+
+    function preventDefault(e) {
+      e = e || window.event;
+      if (e.preventDefault)
+        e.preventDefault();
+      e.returnValue = false;
+    }
+
+    function preventDefaultForScrollKeys(e) {
+      if (keys[e.keyCode]) {
+        preventDefault(e);
+        return false;
+      }
+    }
+
+    function disableScroll() {
+      if (window.addEventListener) // older FF
+        window.addEventListener('DOMMouseScroll', preventDefault, false);
+      window.onwheel = preventDefault; // modern standard
+      window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+      window.ontouchmove = preventDefault; // mobile
+      document.onkeydown = preventDefaultForScrollKeys;
+    }
+
+    let scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+
+    window.addEventListener('wheel', function (e) {
+      const previousTarget = document.querySelector(document.querySelector('.side-menu > a[href^="#"].active').hash);
+      const active = document.querySelector('.side-menu > a[href^="#"].active');
+
+      if (e.deltaY < 0) {
+        // Up
+        if (active.previousElementSibling) {
+          console.log('Up')
+          active.previousElementSibling.click();
+        }
+      } else if (e.deltaY > 0) {
+        // Down
+        if (active.nextElementSibling) {
+          console.log('Down')
+          active.nextElementSibling.click();
+        }
+      }
+
+      scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+    });
+  </script>
+</body>
+
+</html>
