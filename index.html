@@ -17,11 +17,17 @@
 </head>
 
 <body>
-  <header>
-    <h1 class="title">QuantumSheep</h1>
-    <img class="hamburger" src="/assets/svg/hamburger.svg" alt="Menu" />
+  <header class="top">
+    <div>
+      <h1 class="title">QuantumSheep</h1>
+      <img class="hamburger" src="/assets/svg/hamburger.svg" alt="Menu">
+    </div>
   </header>
   <div class="side-menu">
+    <a href="#home">
+      <span>Home</span>
+      <div></div>
+    </a>
     <a href="#about">
       <span>About</span>
       <div></div>
@@ -30,30 +36,131 @@
       <span>Skills</span>
       <div></div>
     </a>
+    <a href="#projects">
+      <span>Projects</span>
+      <div></div>
+    </a>
   </div>
   <main>
-    <section id="about">
+    <section id="home">
       <div class="section-content">
-        <div class="section-title">Hi! I’m <span class="blue">Nathanael</span>, and I’m a fullstack developer.</div>
-        <div class="section-divider"></div>
-        <div class="section-description">Driven by my passion, I put my all in everything I do programming-wise.
-          Join me in my coding adventure!</div>
+        <h1>Hi! I’m <span class="blue">Nathanael</span>, and I’m a fullstack developer.</h1>
+        <hr>
+        <div class="section-description">Driven by my passion, I put my all in everything I do programming-wise. Join
+          me in my coding adventure!</div>
       </div>
       <div class="section-footer">
-        <a>
+        <a href="#about">
+          <img class="down-arrow" src="/assets/svg/arrow-down.svg" alt="Next" />
+        </a>
+      </div>
+    </section>
+    <section id="about">
+      <div class="section-content">
+        <h1>About <span class="blue">me</span></h1>
+        <hr>
+        <h2>My education</h2>
+        <div class="experience">
+          <div class="range">2017 - 2022</div>
+          <div>
+            <div class="title blue">Mastère en informatique</div>
+            <div class="description">ESGI (École Supérieure du Génie Informatique)</div>
+          </div>
+        </div>
+        <div class="experience">
+          <div class="range">2015 - 2017</div>
+          <div>
+            <div class="title blue">Bac Professionnel SEN (Systèmes Électroniques et Numériques)</div>
+            <div class="description">Lycée Professionnel La Fayette (Fontaineroux)</div>
+          </div>
+        </div>
+        <h2>My work experience</h2>
+        <div class="experience">
+          <div class="range">2017 - </div>
+          <div>
+            <div class="title blue">Développeur Web ASP.NET MVC</div>
+            <div class="description">
+              <div><u>Mydral</u> - Data Company</div>
+              <div>Développement de l'extranet:</div>
+              <div>- Interface et système de gestion de formation</div>
+              <div>- Outil de facturation automatisé</div>
+              <div>- Refonte design de la plateforme</div>
+            </div>
+          </div>
+        </div>
+        <div class="experience">
+          <div class="range">
+            <div>Mars 2017</div>
+            <div>Avril 2017</div>
+          </div>
+          <div>
+            <div class="title blue">Développeur Web ASP.NET Webform</div>
+            <div class="description">
+              <div><u>Docapost</u></div>
+              <div>Développement d'une interface de planning pour faciliter l'accessibilité d'information sur la
+                disponibilité des employés.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section-footer">
+        <a href="#skills">
           <img class="down-arrow" src="/assets/svg/arrow-down.svg" alt="Next" />
         </a>
       </div>
     </section>
     <section id="skills">
       <div class="section-content">
-        <div class="section-title">Hi! I’m <span class="blue">Nathanael</span>, and I’m a fullstack developer.</div>
-        <div class="section-divider"></div>
-        <div class="section-description">Driven by my passion, I put my all in everything I do programming-wise.
-          Join me in my coding adventure!</div>
+        <h1>Skills</h1>
+        <hr>
       </div>
       <div class="section-footer">
-        <a>
+        <a href="#projects">
+          <img class="down-arrow" src="/assets/svg/arrow-down.svg" alt="Next" />
+        </a>
+      </div>
+    </section>
+    <section id="projects">
+      <div class="section-content">
+        <h1>My favourite <span class="blue">projects</span></h1>
+        <hr>
+        <div class="experience">
+          <div>
+            <div class="title blue">
+              <a href="https://github.com/QuantumSheep/node-icmp" target="blank">
+                Implementation of the Internet Control Message Protocol in NodeJs
+              </a>
+            </div>
+            <div class="description">
+              <div>
+                ICMP is a protocol used by the popular commands <b>ping</b> and <b>traceroute</b> to troubleshoot
+                Internet connections. I wanted to have this protocol in NodeJs so I writed
+                <a href="https://www.npmjs.com/package/icmp" target="blank"><u>a package</u></a> to provide it.</div>
+            </div>
+          </div>
+        </div>
+        <div class="experience">
+          <div>
+            <div class="title blue">
+              <a href="https://github.com/QuantumSheep/phpterminal" target="blank">PHPTerminal</a>
+            </div>
+            <div class="description">
+              <div>
+                During the first year of my cursus at the
+                <a href="https://www.esgi.fr" target="blank"><u>ESGI</u></a>, I needed to do an
+                annuary project in <b>team</b> of three. So we decided to make « PHPTerminal », which, like its name says, a
+                terminal in <b>PHP</b>, the language being given by our professors.
+                <br>
+                <br>
+                This project was a bit tricky because we needed to use <b>asynchronous socket listeners</b> in PHP
+                which is not a native functionality.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section-footer">
+        <a href="#skills">
           <img class="down-arrow" src="/assets/svg/arrow-down.svg" alt="Next" />
         </a>
       </div>
@@ -89,70 +196,49 @@
       });
     });
 
-    document.querySelectorAll('img.down-arrow').forEach(img => {
-      const link = img.closest('a');
-      const section = img.closest('section');
-
-      if (parent && section) {
-        const nextSection = section.nextElementSibling;
-
-        if (nextSection) {
-          link.href = `#${nextSection.id}`;
-        }
-      }
-    });
-
-    selectSideMenuAnchor(window.location.hash || "#about");
+    selectSideMenuAnchor(window.location.hash || "#home");
     setAnchor();
 
-    // left: 37, up: 38, right: 39, down: 40,
-    // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-    var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
+    const header = document.querySelector('header');
 
-    function preventDefault(e) {
-      e = e || window.event;
-      if (e.preventDefault)
-        e.preventDefault();
-      e.returnValue = false;
-    }
+    function defineHeaderOpacity(e) {
+      const topClass = header.classList.contains('top');
 
-    function preventDefaultForScrollKeys(e) {
-      if (keys[e.keyCode]) {
-        preventDefault(e);
-        return false;
+      const maxTop = 50;
+
+      if (window.scrollY < maxTop && !topClass) {
+        header.classList.add('top');
+      } else if (window.scrollY > maxTop && topClass) {
+        header.classList.remove('top');
       }
     }
 
-    function disableScroll() {
-      if (window.addEventListener) // older FF
-        window.addEventListener('DOMMouseScroll', preventDefault, false);
-      window.onwheel = preventDefault; // modern standard
-      window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
-      window.ontouchmove = preventDefault; // mobile
-      document.onkeydown = preventDefaultForScrollKeys;
-    }
+    defineHeaderOpacity();
 
-    let scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+    window.addEventListener('scroll', defineHeaderOpacity);
 
-    window.addEventListener('wheel', function (e) {
-      const previousTarget = document.querySelector(document.querySelector('.side-menu > a[href^="#"].active').hash);
-      const active = document.querySelector('.side-menu > a[href^="#"].active');
+    window.addEventListener('scroll', function (e) {
+      const sections = document.getElementsByTagName('section');
+      const scrollPos = window.scrollY + 400;
 
-      if (e.deltaY < 0) {
-        // Up
-        if (active.previousElementSibling) {
-          console.log('Up')
-          active.previousElementSibling.click();
-        }
-      } else if (e.deltaY > 0) {
-        // Down
-        if (active.nextElementSibling) {
-          console.log('Down')
-          active.nextElementSibling.click();
+      if (sections) {
+        for (let i in sections) {
+          const index = parseInt(i);
+
+          const section = sections[index];
+          const nextSection = sections[index + 1];
+
+          if (nextSection) {
+            if (scrollPos >= section.offsetTop && scrollPos < nextSection.offsetTop) {
+              selectSideMenuAnchor(`#${section.id}`);
+              break;
+            }
+          } else if (scrollPos >= section.offsetTop) {
+            selectSideMenuAnchor(`#${section.id}`);
+            break;
+          }
         }
       }
-
-      scrollPos = window.pageYOffset || document.documentElement.scrollTop;
     });
   </script>
 </body>
