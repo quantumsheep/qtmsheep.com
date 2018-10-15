@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="873px" height="302px" viewBox="0 0 873 302" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Untitled</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <style>
+            @font-face { font-family: AndaleMono; src: url('/assets/fonts/AndaleMono.ttf'); }
+        </style>
+        <polygon id="path-1" points="85.4575597 0 168.994847 197.2917 1.9202727 197.2917"></polygon>
+        <filter x="-20.4%" y="-18.3%" width="140.7%" height="135.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="10" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.0392156863   0 0 0 0 0.0588235294   0 0 0 0 0.290196078  0 0 0 0.200945426 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <polygon id="path-3" points="69.5 0 139 167.234924 0 167.234924"></polygon>
+        <filter x="-24.5%" y="-21.7%" width="148.9%" height="141.4%" filterUnits="objectBoundingBox" id="filter-4">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="10" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.0392156863   0 0 0 0 0.0588235294   0 0 0 0 0.290196078  0 0 0 0.200945426 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <polygon id="path-5" points="83 0 166 185.381166 0 185.381166"></polygon>
+        <filter x="-30.4%" y="-32.1%" width="160.8%" height="156.4%" filterUnits="objectBoundingBox" id="filter-6">
+            <feMorphology radius="5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="10" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.0392156863   0 0 0 0 0.0588235294   0 0 0 0 0.290196078  0 0 0 0.0998924366 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <polygon id="path-7" points="88.5 0 177 210.419372 0 210.419372"></polygon>
+        <filter x="-19.2%" y="-17.2%" width="138.4%" height="132.9%" filterUnits="objectBoundingBox" id="filter-8">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="10" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.0392156863   0 0 0 0 0.0588235294   0 0 0 0 0.290196078  0 0 0 0.200945426 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <polygon id="path-9" points="83 0 166 185.381166 0 185.381166"></polygon>
+        <filter x="-30.4%" y="-32.1%" width="160.8%" height="156.4%" filterUnits="objectBoundingBox" id="filter-10">
+            <feMorphology radius="5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="10" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.0392156863   0 0 0 0 0.0588235294   0 0 0 0 0.290196078  0 0 0 0.0998924366 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="chart">
+            <g id="chart-reperes" opacity="0.2" transform="translate(113.000000, 9.000000)" stroke="#FFFFFF" stroke-linecap="square" stroke-width="2">
+                <path d="M12.7758621,0.475409836 L728.224138,0.475409836" id="line-100"></path>
+                <path d="M12.7758621,44.2131148 L728.224138,44.2131148" id="line-80"></path>
+                <path d="M12.7758621,87 L728.224138,87" id="line-60"></path>
+                <path d="M12.7758621,129.786885 L728.224138,129.786885" id="line-40"></path>
+                <path d="M12.7758621,173.52459 L728.224138,173.52459" id="line-20"></path>
+            </g>
+            <text id="0" font-family="AndaleMono, Andale Mono" font-size="24" font-weight="normal" fill="#FFFFFF">
+                <tspan x="83.5976562" y="240">0</tspan>
+            </text>
+            <g id="Javascript" transform="translate(110.000000, 41.000000)">
+                <g id="Triangle">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#5FCFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <text id="Javascript-(Node,-Re" font-family="AndaleMono, Andale Mono" font-size="16" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="28.8464916" y="221.043478">Javascript </tspan>
+                    <tspan x="14.4441478" y="239.043478">(Node, React, </tspan>
+                    <tspan x="43.2488353" y="257.043478">Native)</tspan>
+                </text>
+            </g>
+            <g id="PHP" transform="translate(402.000000, 71.000000)">
+                <g id="Triangle-Copy-2">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                    <use fill="#5FCFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                </g>
+                <text font-family="AndaleMono, Andale Mono" font-size="16" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="52.8478165" y="190.980392">PHP</tspan>
+                </text>
+            </g>
+            <g id=".NET" transform="translate(248.000000, 53.000000)">
+                <text font-family="AndaleMono, Andale Mono" font-size="16" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="63.796875" y="208.986547">.NET</tspan>
+                </text>
+                <g id="Triangle-Copy-4">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                    <use fill="#ABE6FF" fill-rule="evenodd" xlink:href="#path-5"></use>
+                </g>
+            </g>
+            <g id="HTML+S" transform="translate(672.000000, 28.000000)">
+                <g id="Triangle-Copy-3">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-8)" xlink:href="#path-7"></use>
+                    <use fill="#5FCFFF" fill-rule="evenodd" xlink:href="#path-7"></use>
+                </g>
+                <text id="HTML+CSS" font-family="AndaleMono, Andale Mono" font-size="16" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="50.2861413" y="233.963855">HTML+CSS</tspan>
+                </text>
+            </g>
+            <g id="SQL" transform="translate(517.000000, 53.000000)">
+                <g id="Triangle-Copy-4">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-10)" xlink:href="#path-9"></use>
+                    <use fill="#ABE6FF" fill-rule="evenodd" xlink:href="#path-9"></use>
+                </g>
+                <text font-family="AndaleMono, Andale Mono" font-size="16" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="68.5976562" y="208.986547">SQL</tspan>
+                </text>
+            </g>
+            <text id="20" font-family="AndaleMono, Andale Mono" font-size="24" font-weight="normal" fill="#FFFFFF">
+                <tspan x="69.1953125" y="196">20</tspan>
+            </text>
+            <text id="40" font-family="AndaleMono, Andale Mono" font-size="24" font-weight="normal" fill="#FFFFFF">
+                <tspan x="69.1953125" y="152">40</tspan>
+            </text>
+            <text id="60" font-family="AndaleMono, Andale Mono" font-size="24" font-weight="normal" fill="#FFFFFF">
+                <tspan x="69.1953125" y="109">60</tspan>
+            </text>
+            <text id="80" font-family="AndaleMono, Andale Mono" font-size="24" font-weight="normal" fill="#FFFFFF">
+                <tspan x="69.1953125" y="66">80</tspan>
+            </text>
+            <text id="100" font-family="AndaleMono, Andale Mono" font-size="24" font-weight="normal" fill="#FFFFFF">
+                <tspan x="54.7929688" y="22">100</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
