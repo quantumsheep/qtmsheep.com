@@ -354,3 +354,7 @@ section hr {
     font-size: 0.9em;
   }
 }
+
+object, img {
+  max-width: 100%;
+}
