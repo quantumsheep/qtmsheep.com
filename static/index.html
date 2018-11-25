@@ -65,42 +65,44 @@
         <div class="experience">
           <div class="range">2017 - 2022</div>
           <div>
-            <div class="title blue">Mastère en informatique</div>
+            <div class="title blue">Master in Computer Science</div>
             <div class="description">ESGI (École Supérieure du Génie Informatique)</div>
           </div>
         </div>
         <div class="experience">
           <div class="range">2015 - 2017</div>
           <div>
-            <div class="title blue">Bac Professionnel SEN (Systèmes Électroniques et Numériques)</div>
-            <div class="description">Lycée Professionnel La Fayette (Fontaineroux)</div>
+            <div class="title blue">Professional <a href="https://en.wikipedia.org/wiki/Baccalaur%C3%A9at" target="blank">baccalaureate</a> SEN (Electronic and Digital Systems)</div>
+            <div class="description">Technical College <a href="http://www.lyceelafayette.fr/" target="blank"><u>La Fayette (Fontaineroux)</u></a></div>
           </div>
         </div>
         <h2>My work experience</h2>
         <div class="experience">
-          <div class="range">2017 - </div>
+          <div class="range">
+            <div>June 2017</div>
+            <div>to today</div>
+          </div>
           <div>
-            <div class="title blue">Développeur Web ASP.NET MVC</div>
+            <div class="title blue">ASP.NET MVC developer</div>
             <div class="description">
               <div><u>Mydral</u> - Data Company</div>
-              <div>Développement de l'extranet:</div>
-              <div>- Interface et système de gestion de formation</div>
-              <div>- Outil de facturation automatisé</div>
-              <div>- Refonte design de la plateforme</div>
+              <div>Extranet development:</div>
+              <div>- Interface and formation managing system</div>
+              <div>- Automated billing tool</div>
+              <div>- Platform's redesigning</div>
             </div>
           </div>
         </div>
         <div class="experience">
           <div class="range">
-            <div>Mars 2017</div>
-            <div>Avril 2017</div>
+            <div>March 2017</div>
+            <div>to April 2017</div>
           </div>
           <div>
-            <div class="title blue">Développeur Web ASP.NET Webform</div>
+            <div class="title blue">ASP.NET WebForm developer</div>
             <div class="description">
               <div><u>Docapost</u></div>
-              <div>Développement d'une interface de planning pour faciliter l'accessibilité d'information sur la
-                disponibilité des employés.</div>
+              <div>Development of a calendar interface to facilitate accessibility of information on employee availability.</div>
             </div>
           </div>
         </div>
@@ -130,15 +132,36 @@
         <div class="experience">
           <div>
             <div class="title blue">
+              <a href="https://warshield.qtmsheep.com" target="blank">
+                WarShield - AES-256 file cipherer
+              </a>
+            </div>
+            <div class="description">
+              <div>
+                It's a CLI tool made to cipher and decipher your files with a password using AES-256.
+                It was made to ensure a full files protection inside a storage device. If those are lost or stolen,
+                malicious peoples can take over your data.
+                <br>
+                <br>
+                It uses AES-256 GCM (Galois/Counter Mode) with random 16 bytes initialization vector. Key is hash
+                in a 256 bits key with SHA-512 using random 64 bytes salt and rounds (between 3000 and 9000 rounds).
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="experience">
+          <div>
+            <div class="title blue">
               <a href="https://github.com/QuantumSheep/node-icmp" target="blank">
-                Implementation of the Internet Control Message Protocol in NodeJs
+                Implementation of the Internet Control Message Protocol in NodeJS
               </a>
             </div>
             <div class="description">
               <div>
                 ICMP is a protocol used by the popular commands <b>ping</b> and <b>traceroute</b> to troubleshoot
                 Internet connections. I wanted to have this protocol in NodeJs so I writed
-                <a href="https://www.npmjs.com/package/icmp" target="blank"><u>a package</u></a> to provide it.</div>
+                <a href="https://www.npmjs.com/package/icmp" target="blank"><u>a package</u></a> to provide it.
+              </div>
             </div>
           </div>
         </div>
@@ -150,7 +173,7 @@
             <div class="description">
               <div>
                 During the first year of my cursus at the
-                <a href="https://www.esgi.fr" target="blank"><u>ESGI</u></a>, I needed to do an
+                <a href="#about" target="blank"><u>ESGI</u></a>, I needed to do an
                 annuary project in <b>team</b> of three. So we decided to make « PHPTerminal », which, like its name says, a
                 terminal in <b>PHP</b>, the language being given by our professors.
                 <br>
@@ -162,86 +185,10 @@
           </div>
         </div>
       </div>
-      <div class="section-footer">
-        <a href="#skills">
-          <img class="down-arrow" src="/assets/svg/arrow-down.svg" alt="Next" />
-        </a>
-      </div>
     </section>
   </main>
 
-  <script>
-    const selectSideMenuAnchor = hash => {
-      document.querySelectorAll('.side-menu > a[href^="#"]').forEach(link => link.classList.remove('active'));
-
-      const link = document.querySelector(`.side-menu > a[href="${hash}"]`);
-
-      if (link) {
-        link.classList.add('active');
-      }
-    }
-
-    const setAnchor = () => document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const href = this.getAttribute('href');
-
-        window.history.replaceState(null, document.title, href);
-
-        document.querySelector(href).scrollIntoView({
-          behavior: 'smooth'
-        });
-
-        setTimeout(() => console.log('done'), 100);
-      });
-    });
-
-    selectSideMenuAnchor(window.location.hash || "#home");
-    setAnchor();
-
-    const header = document.querySelector('header');
-
-    function defineHeaderOpacity(e) {
-      const topClass = header.classList.contains('top');
-
-      const maxTop = 50;
-
-      if (window.scrollY < maxTop && !topClass) {
-        header.classList.add('top');
-      } else if (window.scrollY > maxTop && topClass) {
-        header.classList.remove('top');
-      }
-    }
-
-    defineHeaderOpacity();
-
-    window.addEventListener('scroll', defineHeaderOpacity);
-
-    window.addEventListener('scroll', function (e) {
-      const sections = document.getElementsByTagName('section');
-      const scrollPos = window.scrollY + 400;
-
-      if (sections) {
-        for (let i in sections) {
-          const index = parseInt(i);
-
-          const section = sections[index];
-          const nextSection = sections[index + 1];
-
-          if (nextSection) {
-            if (scrollPos >= section.offsetTop && scrollPos < nextSection.offsetTop) {
-              selectSideMenuAnchor(`#${section.id}`);
-              break;
-            }
-          } else if (scrollPos >= section.offsetTop) {
-            selectSideMenuAnchor(`#${section.id}`);
-            break;
-          }
-        }
-      }
-    });
-  </script>
+  <script src="/assets/js/script.js"></script>
 </body>
 
 </html>

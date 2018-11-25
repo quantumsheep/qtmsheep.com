@@ -277,14 +277,14 @@ section hr {
 
 .experience .range {
   font-size: 1.25em;
-  width: 136px;
+  /* width: 136px; */
   min-width: 136px;
   max-width: 100%;
 }
 
-.experience .range div:nth-child(1n+2) {
+/* .experience .range div:nth-child(1n+2) {
   margin-top: 12px;
-}
+} */
 
 .experience .title {
   font-size: 1.375em;
@@ -344,6 +344,10 @@ section hr {
   
   .experience .range {
     font-size: 1em;
+  }
+
+  .experience .range div {
+    display: inline-block;
   }
 
   .experience .title {
