@@ -1,364 +1,73 @@
-/****************************************************************************
- * QuantumSheep's website design
- * Copyright 2018 | Nathanael Demacon | https://qtmsheep.com
- * Design by Manon Berthet-Tarreau (https://aow.digital)
- * Integration by Nathanel Demacon (https://qtmsheep.com)
- *
- * This template integrates components from the following projects
- *
- *  normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css
- *
- ****************************************************************************/
-
-@font-face {
-  font-family: Futura;
-  src: url('/assets/fonts/Futura-Medium.ttf');
-}
-
-@font-face {
-  font-family: FuturaICGDemi;
-  src: url('/assets/fonts/Futura-ICG-Demi.ttf');
-}
-
-@font-face {
-  font-family: AndaleMono;
-  src: url('/assets/fonts/AndaleMono.ttf');
-}
-
-:root {
-  --blue: #5fcfff;
-  --sm-width-px: 768px;
-  --md-width-px: 992px;
-  --mb-width-px: 1200px;
-}
-
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-body, html {
-  height: 100%;
+  box-sizing: border-box;
 }
 
 body {
-  color: #ffffff;
-  font-family: Futura;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-}
-
-main {
-  position: relative;
-  background-color: #350d2e;
-  min-height: 100%;
-}
-
-a {
-  text-decoration: none;
-  outline: none;
-  color: inherit;
-}
-
-h1 {
-  margin: 0;
-}
-
-header {
-  width: 100%;
-  position: fixed;
-  z-index: 9999;
-  padding: 25px 60px 0px 60px;
-}
-
-header * {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
-header > div {
-  opacity: 0.2;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-transition: all .2s;
-  -o-transition: all .2s;
-  transition: all .2s;
-}
-
-header > div:hover {
-  opacity: 1;
-}
-
-header.top > div {
-  opacity: 1;
-}
-
-header h1 {
-  font-weight: 500;
-  font-size: 2.188em;
-  font-family: FuturaICGDemi;
-}
-
-.hamburger {
-  -webkit-transition: all .2s;
-  -o-transition: all .2s;
-  transition: all .2s;
-  height: 100%;
-}
-
-.hamburger:hover {
-  opacity: 0.8;
-  cursor: pointer;
-}
-
-.side-menu {
-  position: fixed;
-  right: 60px;
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: end;
-  z-index: 9998;
-}
-
-.side-menu > a {
-  padding-bottom: 20px;
-  color: #ffffff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.side-menu > a > span {
-  opacity: 0;
-  -webkit-transition: all .3s;
-  -o-transition: all .3s;
-  transition: all .3s;
-  right: 42px;
-  position: absolute;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  pointer-events: none;
-}
-
-.side-menu > a:hover > span {
-  opacity: 1;
-}
-
-.side-menu > a > div {
-  display: inline-block;
-  width: 27px;
-  height: 27px;
-  border: solid 2px #979797;
-  border-radius: 100%;
-  -webkit-transition: all .2s;
-  -o-transition: all .2s;
-  transition: all .2s;
-}
-
-.side-menu > a.active > div {
-  background-color: #979797;
-}
-
-section {
   min-height: 100vh;
-  padding: 45px 60px;
-  padding-top: 135px;
-  padding-right: 114px;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  background-color: #111120;
+  color: #f1f1f1;
+  font-family: "Cutive Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  position: relative;
+  justify-content: center;
+  align-items: center;
 }
 
-.section-content {
-  min-height: 50%;
-  padding-left: 140px;
-  margin-top: auto;
-  margin-bottom: auto;
-  width: 920px;
+.info {
+  text-align: center;
+  margin: 2em;
+  margin-bottom: 10em;
+}
+
+.identity {
+  margin-bottom: 18px;
+}
+
+.face {
+  display: inline-block;
   max-width: 100%;
+  width: 192px;
 }
 
-@media (max-width: 1200px) {
-  .section-content {
-    padding-left: 0px;
-  }
+.face > div {
+  padding-top: 100%;
+  border-radius: 100%;
+  margin-bottom: 12px;
+
+  background-image: url(/assets/images/my-sweaty-face.jpg);
+  background-size: 256px;
+  background-position-x: -31px;
+  background-position-y: -22px;
+
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-section h1, section h2 {
-  font-weight: 500;
+.name {
+  font-size: 24px;
 }
 
-section h1 {
-  font-size: 3.75em;
-}
-
-section h2 {
-  font-size: 2.25em;
-}
-
-.section-description {
-  font-family: AndaleMono;
-  font-size: 1.625em;
-  line-height: 1.53;
-}
-
-section hr {
-  background-color: var(--blue);
-  width: 219px;
-  height: 12px;
-  max-width: 100%;
-  border: 0;
-  margin: 0;
-  margin-top: 24px;
-  margin-bottom: 46px;
-}
-
-.section-footer {
-  height: 72px;
-  width: 100%;
-}
-
-.section-footer img {
-  max-height: 100%;
-}
-
-.down-arrow {
-  margin-right: auto;
-  margin-left: auto;
-  display: block;
-}
-
-.blue {
-  color: var(--blue);
-}
-
-.experience {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.links {
   display: flex;
-  padding-bottom: 30px;
+  justify-content: center;
 }
 
-.experience .range, .experience .title {
-  font-weight: 500;
+.links a {
+  color: inherit !important;
+  font-size: 1.32em;
+  transition: all 0.2s;
+  outline: none;
 }
 
-.experience .range {
-  font-size: 1.25em;
-  /* width: 136px; */
-  min-width: 136px;
-  max-width: 100%;
+.links a:not(:first-child) {
+  margin-left: 2em;
 }
 
-/* .experience .range div:nth-child(1n+2) {
-  margin-top: 12px;
-} */
-
-.experience .title {
-  font-size: 1.375em;
+.links a:hover {
+  opacity: 0.7;
 }
 
-.experience .description {
-  font-family: AndaleMono;
-  margin-top: 12px;
-  line-height: 1.67;
-  font-size: 0.938em;
-}
-
-@media screen and (max-width: 920px) {
-  .side-menu {
-    display: none;
-  }
-
-  header {
-    padding: 25px 20px 0px 20px;
-  }
-
-  header h1 {
-    font-size: 1.5em;
-  }
-
-  header > div {
-    height: 32px;
-  }
-
-  section {
-    padding: 15px 20px;
-    padding-top: 75px;
-  }
-
-  section h1 {
-    font-size: 2em;
-  }
-
-  section h2 {
-    font-size: 1.5em;
-  }
-
-  section hr {
-    margin-top: 8px;
-    margin-bottom: 14px;
-    width: 176px;
-    height: 8px;
-  }
-
-  .section-description {
-    font-size: 1.0em;
-  }
-
-  .experience {
-    display: block;
-  }
-  
-  .experience .range {
-    font-size: 1em;
-  }
-
-  .experience .range div {
-    display: inline-block;
-  }
-
-  .experience .title {
-    font-size: 1.2em;
-  }
-
-  .experience .description {
-    font-size: 0.9em;
-  }
-}
-
-object, img {
-  max-width: 100%;
+.links a:active {
+  opacity: 0.4;
 }
