@@ -50,7 +50,7 @@ body {
 
 .links {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .links a {
@@ -58,10 +58,6 @@ body {
   font-size: 1.32em;
   transition: all 0.2s;
   outline: none;
-}
-
-.links a:not(:first-child) {
-  margin-left: 2em;
 }
 
 .links a:hover {
