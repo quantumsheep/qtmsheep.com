@@ -8,6 +8,7 @@ function Seo({ description, title, isArticle = false }) {
       query {
         site {
           siteMetadata {
+            siteUrl
             title
             description
             author {
@@ -49,15 +50,19 @@ function Seo({ description, title, isArticle = false }) {
         },
         {
           property: 'og:image',
-          content: site.siteMetadata.ogImage,
+          content: `${site.siteMetadata.siteUrl}${site.siteMetadata.ogImage}`,
         },
         {
-          property: 'twitter:card',
+          name: 'twitter:creator',
+          content: '@qtmsheep',
+        },
+        {
+          name: 'twitter:card',
           content: 'summary_large_image',
         },
         {
-          property: 'twitter:image:src',
-          content: site.siteMetadata.ogImage,
+          name: 'twitter:image',
+          content: `${site.siteMetadata.siteUrl}${site.siteMetadata.ogImage}`,
         },
         {
           property: `og:type`,
