@@ -6,7 +6,7 @@ module.exports = {
   ogImage: `/og-image.png`, // Path to your in the 'static' folder
   comments: {
     utterances: {
-      repo: `quantumsheep/blog`,
+      repo: `quantumsheep/qtmsheep.com`,
     },
   },
   ga: '0', // Google Analytics Tracking ID
