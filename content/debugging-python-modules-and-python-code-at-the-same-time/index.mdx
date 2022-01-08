@@ -1,0 +1,290 @@
+---
+emoji: 🔌
+title: Debugging Python modules and Python code at the same time
+date: '2022-01-07 18:30:00'
+author: Nathanael Demacon
+tags: python debugging c c++ module vscode
+categories: tutorials
+---
+
+import vscodeRunAndDebugVideo from './vscode-run-and-debug.mp4';
+
+Sometimes you need to make Python modules whether for performance purposes, technical purpose, fun or whatever, and sometimes you also want to debug this module but you also want to debug it along with your Python code. This tutorial will show you how to debug Python modules and Python code, first separately, then together.
+
+First we need a debugger for Python. I chose [debugpy](https://github.com/microsoft/debugpy) as it's very simple to use and provide a great interface between Python and *- but not only -* VS Code.
+
+It can be installed with `pip`:
+
+```shell
+pip install debugpy
+```
+
+And running it:
+
+```shell
+python -m debugpy --listen 5678 --wait-for-client /path/to/main.py
+```
+
+The `--wait-for-client` flag is needed in order for debugpy to wait for a debugging client connection before running the Python code, hence allowing the complete debugging of the program.
+
+The port passed to `--listen` option can be changed as wanted.
+
+# Debugging a Python module
+
+It's impossible to debug a Python module only using debugpy, however we can use GDB directly with a Python build that has been compiled with `--pydebug` option.
+
+For that purpose, we can install a prebuilt package of Python with debugging enabled. Here's an example with Python 3.8:
+
+```shell
+apt-get install python3.8-dbg
+```
+
+We can then run our program with `python3.8-dbg`:
+
+```shell
+python3.8-dbg /path/to/main.py
+```
+
+Finally, attach the process' PID to a GDB client.
+
+> **Note:** the module used inside Python must be built with debug symbols for the debugger to work correctly.
+
+# Debugging both at the same time from an IDE
+
+Having debuggers is cool but not from a terminal.
+
+## VS Code
+
+In VS Code we have a great interface between the code and the debuggers that can be attached exactly as we want to.
+
+First we need to create a `.vscode/launch.json` file. This file will contain information on how to launch our program and how to attach debuggers to VS Code.
+
+```json
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [],
+  "compounds": []
+}
+```
+
+Inside the configurations property we can run our Python program using `python3.8-dbg` with debugpy like so:
+
+```json
+...
+    "configurations": [
+        {
+            "name": "Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "/usr/bin/python3.8-dbg",
+            "args": [
+                "-m",
+                "debugpy",
+                "--listen",
+                "5678",
+                "--wait-for-client",
+                "/paht/to/main.py"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceRoot}",
+            "environment": [],
+            "externalConsole": false,
+            "logging": {
+                "trace": true,
+                "traceResponse": true
+            },
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ],
+...
+```
+
+Running this in VS Code will just run the program, no debugger.
+
+We need to attach a debugger to it:
+
+```json
+...
+    "configurations": [
+        ...
+        {
+            "name": "Attach GDB",
+            "type": "cppdbg",
+            "request": "attach",
+            "program": "python3.8-dbg",
+            "processId": "${command:pickProcess}",
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ],
+...
+```
+
+Running the `Launch` configuration inside VS Code will automatically attach GDB to the IDE, giving you the possibility to put breakpoints inside your module's source code and allowing diverse memory manipulation.
+
+We now have a debugger for our module but not for our Python code. We need to attach a debugger client for debugpy.
+
+```json
+...
+    "configurations": [
+        ...
+        {
+            "name": "Attach Python",
+            "type": "python",
+            "request": "attach",
+            "preLaunchTask": "wait-for-debugpy",
+            "localRoot": "${workspaceRoot}",
+            "remoteRoot": "${workspaceRoot}",
+            "port": 5678,
+            "host": "localhost"
+        }
+    ],
+...
+```
+
+This configuration needs the Python VS Code extension to be installed.
+
+As you can see the type property of this configuration is different from the `Launch` and `Attach GDB` configurations (`python` instead of `cppdbg`). Because of that VS Code will not attach the Python debugger automatically when running the `Launch` configuration. However we can reference configurations that needs to be started together.
+```json
+...
+    "configurations": [
+        ...
+    ],
+    "compounds": [
+        {
+            "name": "Debug",
+            "configurations": [
+                "Launch",
+                "Attach Python",
+            ],
+        }
+    ]
+...
+```
+
+This will be available along the base configurations inside the `Run and Debug` tab in VS Code.
+
+<center>
+  <video controls style={{ maxWidth: '100%', maxHeight: '360px' }}>
+    <source src={vscodeRunAndDebugVideo} type="video/mp4" />
+  </video>
+</center>
+
+<br />
+
+<details>
+    <summary><b>Full</b> <code class="language-text">.vscode/launch.json</code> <b>file</b></summary>
+
+```json
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch",
+      "type": "cppdbg",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "/usr/bin/python3.8-dbg",
+      "args": ["-m", "debugpy", "--listen", "5678", "--wait-for-client", "/app/src/main.py"],
+      "stopAtEntry": false,
+      "cwd": "${workspaceRoot}",
+      "environment": [],
+      "externalConsole": false,
+      "logging": {
+        "trace": true,
+        "traceResponse": true
+      },
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "Attach GDB",
+      "type": "cppdbg",
+      "request": "attach",
+      "program": "python3.8-dbg",
+      "processId": "${command:pickProcess}",
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "Attach Python",
+      "type": "python",
+      "request": "attach",
+      "preLaunchTask": "wait-for-debugpy",
+      "localRoot": "${workspaceRoot}",
+      "remoteRoot": "${workspaceRoot}",
+      "port": 5678,
+      "host": "localhost"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug",
+      "configurations": ["Launch", "Attach Python"]
+    }
+  ]
+}
+```
+</details>
+
+In the configurations we used `preLaunchTask` property. The `Launch` configuration is running the `build` task and `Attach Python` is running the `wait-for-debugpy` task. These tasks are defined in a new file, `.vscode/tasks.json`. Tasks in VS Code lets us run shell commands. Here is the content of the `.vscode/tasks.json` file:
+
+```json
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "./build.sh"
+    },
+    {
+      "label": "wait-for-debugpy",
+      "type": "shell",
+      "command": "while ! lsof -i:5678 | grep -q LISTEN; do sleep 0.1; done",
+      "presentation": {
+        "reveal": "silent"
+      }
+    }
+  ]
+}
+```
+
+The `build` task is running a shell script that compiles and install our module, in this demo it's running `cmake` then installing the Python's module using `pip install --user -e .`.
+The `wait-for-debugpy` task waits for the port `5678` (debugpy) to be open.
+
+Running the Debug configuration inside the `Run and Debug` tab will now build the module, run our Python program along with debugpy and attach GDB and Python debugger to VS Code.
