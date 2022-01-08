@@ -34,7 +34,7 @@ function BlogTemplate({ data }) {
 
   return (
     <Layout>
-      <Seo title={curPost?.title} description={curPost?.excerpt} />
+      <Seo title={curPost?.title} description={curPost?.excerpt} isArticle />
       <PostHeader post={curPost} viewCount={viewCount} />
       <PostContent html={curPost.html} />
       <PostNavigator prevPost={prevPost} nextPost={nextPost} />

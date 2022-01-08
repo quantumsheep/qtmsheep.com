@@ -2,7 +2,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-function Seo({ description, title }) {
+function Seo({ description, title, isArticle = false }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -51,10 +51,17 @@ function Seo({ description, title }) {
           property: 'og:image',
           content: site.siteMetadata.ogImage,
         },
-
+        {
+          property: 'twitter:card',
+          content: 'summary_large_image',
+        },
+        {
+          property: 'twitter:image:src',
+          content: site.siteMetadata.ogImage,
+        },
         {
           property: `og:type`,
-          content: `website`,
+          content: isArticle ? `article` : `website`,
         },
       ]}
     />
