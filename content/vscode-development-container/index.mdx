@@ -1,0 +1,105 @@
+---
+emoji: 🚢
+title: VS Code Development Container
+date: '2022-01-05 23:00:00'
+author: Nathanael Demacon
+tags: vscode development container docker tool
+categories: tutorials
+---
+
+import addExtensionVideo from './add-extension.mp4';
+import demo1Video from './demo1.mp4';
+
+
+Some projects need to have a specific environment with preinstalled tools and software, or specific IDE configuration for **auto-completion, highlighting, linting, formatting, etc…** All these requirements may be time-consuming for developers and create differences between various operating systems.
+
+VS Code Development Container lets teams configure **project-specific Docker containers** with **preconfigured tools and software** along with custom VS Code configurations and extensions used inside the development environment.
+
+# Setup
+
+First let's create a `.devcontainer/devcontainer.json` file with the following content inside it (preconfigured for easy setup):
+
+```json
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.209.6/containers/docker-existing-docker-compose
+// If you want to run as a non-root user in the container, see .devcontainer/docker-compose.yml.
+{
+  "name": "Existing Docker Compose (Extend)",
+  // Update the 'dockerComposeFile' list if you have more compose files or use different names.
+  "dockerComposeFile": ["../docker-compose.dev.yml"],
+  // The 'service' property is the name of the service for the container that VS Code should
+  // use. Update this value and docker-compose.dev.yml to the real service name.
+  "service": "backend",
+  // Overwrite the default container command
+  "overrideCommand": true,
+  // Setup default git GPG path
+  "postStartCommand": "git config --global gpg.program \"$(which gpg)\"",
+  // The optional 'workspaceFolder' property is the path VS Code should open by default when
+  // connected. This is typically a file mount in docker-compose.dev.yml
+  "workspaceFolder": "/app",
+  // Set *default* container specific settings.json values on container create.
+  "settings": {},
+  // Add the IDs of extensions you want installed when the container is created.
+  "extensions": ["eamodio.gitlens", "ms-azuretools.vscode-docker"]
+}
+```
+
+This is the configuration of the development container. You must update the `service` property to the service name inside the `docker-compose.dev.yml` file.
+
+Here's an example configuration for `docker-compose.dev.yml`:
+
+```yaml
+version: '3'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app
+```
+
+And a simple configuration for `Dockerfile.dev` which starts from NodeJS 16 Bullseye image and installs NestJS CLI:
+
+```docker
+FROM node:16-bullseye
+
+RUN npm i -g @nestjs/cli
+```
+
+# Adding VS Code Extensions
+
+In the example I defined default VS Code extensions (GitLens and Docker). Feel free to add any extensions needed for your project.
+
+To add an extension you must add the ID of the extension in the extensions property in your `.devcontainer/devcontainer.json`. You can also get the ID of an extension inside VS Code by right-clicking on an extension and selecting “Copy Extension ID”.
+
+<center>
+  <video controls style={{ maxWidth: '100%', maxHeight: '500px' }}>
+    <source src={addExtensionVideo} type="video/mp4" />
+  </video>
+</center>
+
+# Running the container
+
+Once configured, you can run the development container by opening the project's folder in VS Code, if it contains a `devcontainer.json` file, a popup will show up. By right-clicking “Reopen in Container”, the IDE will start the container and open VS Code inside it.
+
+<center>
+  <video controls style={{ maxWidth: '100%', maxHeight: '500px' }}>
+    <source src={demo1Video} type="video/mp4" />
+  </video>
+</center>
+
+You can also select “Remote-Containers: Reopen in container” in the VS Code Command Palette.
+
+# Git
+
+Some of you might be using SSH and maybe GPG along with Git. VS Code ensure that SSH and GPG keys are linked to the development container.
+
+However a little change is needed in order to use GPG keys - you need to tell git the path of the container's GPG as the default Git configuration is the one of your host. For that purpose we run the following command inside `postStartCommand` property of the `devcontainer.json` config file:
+
+```shell
+git config --global gpg.program "$(which gpg)"
+```

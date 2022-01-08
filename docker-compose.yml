@@ -6,4 +6,4 @@ services:
     ports:
       - 3000:80
     volumes:
-      - ./static:/usr/share/nginx/html
+      - ./public:/usr/share/nginx/html
